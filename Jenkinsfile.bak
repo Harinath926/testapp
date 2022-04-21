@@ -53,15 +53,17 @@ stages {
     }
   }
 
-  stage('Docker Build') {
+  tage('Docker Build') {
     steps {
       script {
-		sh "docker login -u foo -p Rpa@12345"
-        sh "docker build -t anandsadhu/myapp ."
-		sh "docker push anandsadhu/myapp ."
+        docker.build('anandsadhu/myapp', '--network host --pull .')
+        docker.withRegistry('https://hub.docker.com/','docker') {
+          docker.image('anandsadhu/myapp').push(commit_id)
+       }
       }
     }
   }
+
 
 }
 }
