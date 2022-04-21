@@ -56,7 +56,7 @@ stages {
   stage('Docker Build') {
     steps {
       script {
-        docker.build('anandsadhu/myapp', '--network host --pull .')
+        docker.build('anandsadhu/myapp')
         docker.withRegistry('https://hub.docker.com/','docker') {
           docker.image('anandsadhu/myapp').push(commit_id)
        }

@@ -53,7 +53,7 @@ stages {
     }
   }
 
-  tage('Docker Build') {
+  stage('Docker Build') {
     steps {
       script {
         docker.build('anandsadhu/myapp', '--network host --pull .')
