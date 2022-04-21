@@ -50,10 +50,6 @@ stages {
       script {
         env.commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
       }
-      withCredentials([file(credentialsId: 'DEV_K8S_HQ', variable: 'DEV_K8S_HQ')]) {
-        sh 'cat $DEV_K8S_HQ > /opt/dev_k8s_hq_kubeconfig.yaml'
-        sh 'chmod 0600 /opt/dev_k8s_hq_kubeconfig.yaml'
-      }
     }
   }
 
