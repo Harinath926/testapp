@@ -51,7 +51,11 @@ stages {
   }
   stage('Docker Build') {
     steps {
-        sh 'echo hostname'
+		scritp{		
+			sh '''
+			echo hostname
+			'''
+		}
     }
   }
 }

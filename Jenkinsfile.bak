@@ -49,11 +49,11 @@ stages {
       checkout scm
     }
   }
-  stage('Docker-Build') {
+  stage('Docker Build') {
     steps {
-      script {
-        sh 'echo hostname'
-      }
+		scritp{		
+			sh echo hostname
+		}
     }
   }
 }
