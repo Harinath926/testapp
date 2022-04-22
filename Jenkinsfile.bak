@@ -34,24 +34,27 @@ triggers {
   pollSCM('H/2 * * * *')
 }
 
+options {
+  buildDiscarder(logRotator(numToKeepStr: '10'))
+  skipStagesAfterUnstable()
+  durabilityHint('PERFORMANCE_OPTIMIZED')
+  disableConcurrentBuilds()
+  skipDefaultCheckout(true)
+  overrideIndexTriggers(false)
+}
+
 stages {
   stage ('Checkout'){
     steps {
       checkout scm
-      script {
-        env.commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-      }
     }
   }
-
-  stage('Docker Build') {
+  stage('Docker-Build') {
     steps {
       script {
         sh 'echo hostname'
       }
     }
   }
-
-
 }
 }
