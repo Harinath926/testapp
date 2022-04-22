@@ -34,15 +34,6 @@ triggers {
   pollSCM('H/2 * * * *')
 }
 
-options {
-  buildDiscarder(logRotator(numToKeepStr: '10'))
-  skipStagesAfterUnstable()
-  durabilityHint('PERFORMANCE_OPTIMIZED')
-  disableConcurrentBuilds()
-  skipDefaultCheckout(true)
-  overrideIndexTriggers(false)
-}
-
 stages {
   stage ('Checkout'){
     steps {
@@ -56,7 +47,7 @@ stages {
   stage('Docker Build') {
     steps {
       script {
-        sh "echo hostname"
+        sh 'echo hostname'
       }
     }
   }

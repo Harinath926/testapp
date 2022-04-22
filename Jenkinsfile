@@ -47,9 +47,6 @@ stages {
   stage ('Checkout'){
     steps {
       checkout scm
-      script {
-        env.commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-      }
     }
   }
 
