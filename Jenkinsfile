@@ -10,9 +10,6 @@ stages {
     }
   }
   stage('Docker Build') {
-    when {
-      agent any
-    }
     steps {
 			sh '''
 			echo hostname
