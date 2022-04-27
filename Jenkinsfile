@@ -16,7 +16,7 @@ kind: Pod
 spec:
   containers:
   - name: glams-jenkins-slave
-    image: jenkins/slave
+    image: ubuntu
     imagePullPolicy: Always
     command:
     - cat
