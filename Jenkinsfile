@@ -30,9 +30,9 @@ spec:
         }
     }
     stages {
-        stage('Main') {
+        stage('docker build') {
             steps {
-                sh 'hostname'
+                sh ' docker build -t anandsadhu/myapp .'
             }
         }
     }
