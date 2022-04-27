@@ -34,36 +34,13 @@ triggers {
   pollSCM('H/2 * * * *')
 }
 
-
-options {
-  buildDiscarder(logRotator(numToKeepStr: '10'))
-  skipStagesAfterUnstable()
-  durabilityHint('PERFORMANCE_OPTIMIZED')
-  disableConcurrentBuilds()
-  skipDefaultCheckout(true)
-  overrideIndexTriggers(false)
-}
-
 stages {
-  stage ('Checkout'){
-    steps {
-      checkout scm
-      script {
-        env.commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-      }
-    }
-  }
-
   stage('Docker Build') {
     steps {
-      // sh 'sleep 1200'
-      script {
-        docker.build('anandsadhu/myapp', '--network host --pull .')
-        docker.withRegistry('https://hub.docker.com') {
-          docker.image('anandsadhu/myapp').push(commit_id)
-        }
-      }
+			sh '''
+			echo hostname
+			'''
     }
   }
-
+}
 }
