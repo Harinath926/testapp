@@ -5,27 +5,14 @@ pipeline {
       yaml """
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    name: test-sdk
 spec:
-  volumes:
-    - name: docker-sock
-      hostPath:
-        path: /var/run/docker.sock
   containers:
-  - name: glams-jenkins-slave
-    image: anandsadhu/myapp:latest
-    imagePullPolicy: Always
+  - name: shell
+    image: ubuntu
     command:
-    - cat
-    tty: true
-    resources:
-      requests:
-        memory: "2Gi"
-    volumeMounts:
-     - name: docker-sock
-       mountPath: /var/run/docker.sock
+    - sleep
+    args:
+    - infinity
 """
     }
 }
