@@ -14,6 +14,10 @@ pipeline {
 apiVersion: v1
 kind: Pod
 spec:
+  volumes:
+    - name: docker-sock
+      hostPath:
+        path: /var/run/docker.sock
   containers:
   - name: glams-jenkins-slave
     image: registry.glams.com/glams/jenkins-agent:latest
