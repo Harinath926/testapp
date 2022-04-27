@@ -15,15 +15,12 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: glams-jenkins-slave
-    image: ubuntu
-    imagePullPolicy: Always
+  - name: shell
+    image: jenkins/slave
     command:
-    - cat
-    tty: true
-    resources:
-      requests:
-        memory: "2Gi"
+    - sleep
+    args:
+    - infinity
 '''
             // Can also wrap individual steps:
             // container('shell') {
