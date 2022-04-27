@@ -14,13 +14,9 @@ pipeline {
 apiVersion: v1
 kind: Pod
 spec:
-  volumes:
-    - name: docker-sock
-      hostPath:
-        path: /var/run/docker.sock
   containers:
   - name: glams-jenkins-slave
-    image: registry.glams.com/glams/jenkins-agent:latest
+    image: jenkins/slave
     imagePullPolicy: Always
     command:
     - cat
@@ -28,9 +24,6 @@ spec:
     resources:
       requests:
         memory: "2Gi"
-    volumeMounts:
-     - name: docker-sock
-       mountPath: /var/run/docker.sock
 '''
             // Can also wrap individual steps:
             // container('shell') {
