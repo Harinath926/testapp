@@ -15,12 +15,18 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: shell
+  - name: glams-jenkins-slave
     image: registry.glams.com/glams/jenkins-agent:latest
+    imagePullPolicy: Always
     command:
-    - sleep
-    args:
-    - infinity
+    - cat
+    tty: true
+    resources:
+      requests:
+        memory: "2Gi"
+    volumeMounts:
+     - name: docker-sock
+       mountPath: /var/run/docker.sock
 '''
             // Can also wrap individual steps:
             // container('shell') {
